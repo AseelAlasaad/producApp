@@ -1,6 +1,6 @@
-<<<<<<< HEAD
+
 # producApp
-=======
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
@@ -59,44 +59,74 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+## DataBase Setup
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+# Install Prisma CLI and dependencies
+$ npm install prisma --save-dev
+$ npm install @prisma/client
+$ npx prisma init
+
+# Create and Apply Migration
+$ npx prisma db push
+
+# Generate Prisma Client
+$ npx prisma generate
+
+```
+## Product API Documentation
+Endpoints
+1. Create Product
+
+* Route: POST /product
+
+* Description: Create a new product in the system.
+
+* Request Body:
+``` bash 
+{
+  "name": "Example Product",
+  "price": 99.99,
+  "description": "This is an example product description.",
+  "image": "https://example.com/product-image.jpg"
+}
+
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+2. Get All Products
 
-## Resources
+* Route: GET /product
 
-Check out a few resources that may come in handy when working with NestJS:
+* Description: Retrieve a list of all products in the system.
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+* Response:
 
-## Support
+```bash
+[
+  {
+    "id": "6824ce5c05c0cd94ccc1aec8",
+    "name": "Example Product",
+    "price": 99.99,
+    "description": "This is an example product description.",
+    "image": "https://example.com/product-image.jpg"
+  },
+  {
+    "id": "3a2f7be42bd3b6496f7b33b6",
+    "name": "Another Product",
+    "price": 129.99,
+    "description": "Description of another product.",
+    "image": "https://example.com/another-product.jpg"
+  }
+]
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```
 
-## Stay in touch
+## To generate a service and a module in NestJS using the CLI, use these commands:
+``` bash 
+nest g mo <module-name>
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+nest g s <service-name>
 
-## License
+nest g co product
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
->>>>>>> 8b155e0 (implement puduct APIs and connect server with db)
+```
