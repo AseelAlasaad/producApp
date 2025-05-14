@@ -1,7 +1,9 @@
-import type { NextConfig } from "next";
+// next.config.js
+const { i18n } = require('./next-i18next.config'); // Destructure the i18n object directly
 
-const nextConfig: NextConfig = {
-  /* config options here */
+const nextConfig = {
+  reactStrictMode: true,
+  i18n,  // Use the i18n object directly
 };
 
-export default nextConfig;
+module.exports = nextConfig;
