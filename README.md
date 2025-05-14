@@ -130,3 +130,7 @@ nest g s <service-name>
 nest g co product
 
 ```
+
+## Website UI
+
+![image](./assets/image.png)
