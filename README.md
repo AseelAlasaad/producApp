@@ -137,4 +137,4 @@ nest g co product
 
 
 ## Challenge 
-* Implement internationalization (i18n) with support for
+* Implement internationalization (i18n)
